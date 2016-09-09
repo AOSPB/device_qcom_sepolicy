@@ -15,7 +15,7 @@
 #
 # THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
 # WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
-# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRIN:qGEMENT
 # ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
 # BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
 # CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
@@ -25,17 +25,5 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-type qsee_svc_app, domain;
-app_domain(qsee_svc_app)
-binder_use(qsee_svc_app)
-
-# allow qsee_svc_app to interact with proxy daemon
-binder_call(qsee_svc_app, qseeproxy)
-
-# file permission
-allow qsee_svc_app qsee_svc_app_data_file:dir create_dir_perms;
-allow qsee_svc_app qsee_svc_app_data_file:file create_file_perms;
-
-# allow service manager find
-allow qsee_svc_app { app_api_service system_api_service
- fidodaemon_service qseeproxy_service }:service_manager find;
+#nativeHMI need this
+allow system_app ctl_bootanim_prop:property_service set;
